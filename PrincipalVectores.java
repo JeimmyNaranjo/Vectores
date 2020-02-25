@@ -1,13 +1,11 @@
 
+import java.lang.Integer;
 import java.util.Scanner;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Iterator;
 import java.util.ArrayList;
 /**
  * Problema de vectores  * 
- * @author Jeimmy Naranjo, Santiago Velasquez y Mario Dorado 
- * @version 1
+ * @author Mario Dorado, Santiago Velasquez y Jeimmy Naranjo
+ * @version 2
  */
 public class PrincipalVectores  //Declaracion de la clase Principal
 {
@@ -16,6 +14,7 @@ public class PrincipalVectores  //Declaracion de la clase Principal
         // 1. Definicion de variables
         // Datos de entrada
         int TamañoN, TamañoP;
+        int num = 0;
     
        
        
@@ -26,55 +25,88 @@ public class PrincipalVectores  //Declaracion de la clase Principal
         TamañoN = teclado.nextInt();
         System.out.printf("Ingrese el tamaño del vector B\n");
         TamañoP = teclado.nextInt();
-        
-        List<Integer> ListaA,ListaB,ListaC,ListaD;
-        ListaA = new LinkedList();
-        ListaB = new LinkedList();
-        ListaC = new LinkedList();
-        ListaD = new LinkedList();
+        String[] ArrayA = new String[TamañoN];
+        String[] ArrayB = new String[TamañoP];
+        String[] ArrayC = new String[TamañoN + TamañoP];
+        String[] ArrayD = new String[TamañoN + TamañoP];
+        String[] ArrayE = new String[TamañoN + TamañoP];
        
-        
+       
+        /////Recoleccion de datos///////
        
         for (int contadorA = 0; contadorA < TamañoN; contadorA++)
             {     
-                  System.out.printf("Ingrese el valor # "+ (contadorA +1) +" del Vector A\n");
-                  int numA = teclado.nextInt();
-                  ListaA.add(numA);
+                  System.out.printf("Ingrese el valor # "+ (contadorA +1) +" del Vector A ");
+                  ArrayA[contadorA]= teclado.next();
+               
+                  
             }    
             
         for (int contadorB = 0; contadorB < TamañoP; contadorB++)
             {     
-                  System.out.printf("Ingrese el valor # "+ (contadorB +1) +" del Vector B\n");
-                  int numB = teclado.nextInt();
-                  ListaB.add(numB);
+                  System.out.printf("Ingrese el valor # "+ (contadorB +1) +" del Vector B ");
+                  ArrayB[contadorB]= teclado.next();
+                  
+                  
             } 
          
-        System.out.println("El vector A es: " + ListaA);
-        System.out.println("El vector B es: " + ListaB);
         
-        ///////////////////////Recoleccion de datos/////////////////////////////////////////  
-        ListaC.addAll(ListaA);
-        ListaC.addAll(ListaB);
+     
+       
+        for (int i = 0; i < ArrayA.length; i++)
+         {
+            for (int j = 0; j < ArrayB.length; j++)
+            {
+                if(ArrayA[i].equals(ArrayB[j]))
+                {
+                    ArrayC[num] = ArrayA[i];
+                    num = num +1;
+                     
+                 }
+            }
+         }
         
-        for (int i = 0; i < ListaC.size(); i++)
+        num = 0;
+        for (int i = 0; i < ArrayA.length; i++)
         {
-             for (int j = 0; j < ListaC.size() && !ListaD.contains(ListaC.get(i));j++)
-             {
-                  if (ListaC.get(i)  != (ListaC.get(j)))
-                  {
-                       ListaD.add(ListaA.get(i));
-                       ListaD.add(ListaB.get(j));
-                       
-                  }
-                  
-                  
-             }
+            ArrayD[num] = ArrayA[i];
+            num = num +1;
         }
-        System.out.println("El vector C es: " + ListaD);
         
+        for (int i = 0; i < ArrayB.length; i++)
+        {
+            ArrayD[num] = ArrayB[i];
+            num = num +1;
+        }
         
-        //System.out.println("El vector C es: " + ListaD);
+        for (int i = 0; i < ArrayC.length; i++)
+        {
+            for (int j = 0; j < ArrayD.length; j++)
+            {
+                if (ArrayD[j].equals(ArrayC[i]))
+                {
+                    ArrayD[j] = "";
+                }
+            }
+        }
+        num = 0;
         
+        for (int i = 0; i < ArrayD.length; i++)
+        {
+            if (!ArrayD[i].equals(""))
+            {
+                ArrayE[num] = ArrayD[i];
+                num = num + 1;
+            }
+        }
         
-  } //Fin de la clase principal
+        System.out.println("\nEl vector C es: "  );
+        for (int p = 0; p < num; ++p)
+        {
+             System.out.print(ArrayE[p]);
+              System.out.print( " , ");
+            
+        }
+        
+   } //Fin de la clase principal
 }
