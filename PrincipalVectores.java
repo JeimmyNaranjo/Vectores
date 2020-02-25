@@ -6,7 +6,7 @@ import java.util.Iterator;
 import java.util.ArrayList;
 /**
  * Problema de vectores  * 
- * @author Jeimmy Naranjo
+ * @author Jeimmy Naranjo, Santiago Velasquez y Mario Dorado 
  * @version 1
  */
 public class PrincipalVectores  //Declaracion de la clase Principal
